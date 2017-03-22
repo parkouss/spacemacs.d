@@ -38,7 +38,6 @@ values."
      ;; ----------------------------------------------------------------
      helm
      auto-completion
-     better-defaults
      emacs-lisp
      git
      python
@@ -47,8 +46,7 @@ values."
      c-c++
      ;; semantic
      cscope
-     visual-regexp
-     comment-dwim-2
+     better-edition
      ;; org
      (shell :variables
             shell-default-height 30
@@ -309,16 +307,4 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (delete-selection-mode t)
-  (setq projectile-use-git-grep t)
-  (global-set-key (kbd "M-ç") 'ispell-word)
-
-  (defun my-helm-yank-pop (&optional arg)
-    (interactive "*p")
-    (if (not (eq last-command 'yank))
-        (helm-show-kill-ring)
-      (yank-pop arg)))
-  (global-set-key (kbd "M-y") 'my-helm-yank-pop)
-
-  (add-hook 'text-mode-hook 'turn-on-auto-fill)
   )
