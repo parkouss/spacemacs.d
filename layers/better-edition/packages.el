@@ -88,4 +88,8 @@ point reaches the beginning or end of the buffer, stop there."
   :post-config
   (setq python-fill-docstring-style 'django))
 
+(spacemacs|use-package-add-hook erc
+  :post-config
+  (add-hook 'erc-mode-hook (lambda () (auto-fill-mode -1))))
+
 ;;; packages.el ends here

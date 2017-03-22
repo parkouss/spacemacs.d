@@ -54,6 +54,12 @@ values."
      (spell-checking :variables ispell-dictionary "english")
      syntax-checking
      html
+     (erc :variables
+          erc-server-list
+          ;; connect to bitlbee
+          '(("127.0.0.1"
+             :port 6667
+             :nick "jp")))
      ;; (keyboard-layout :variables kl-layout 'bepo)
      ;; version-control
      )
