@@ -44,7 +44,8 @@
 (global-set-key (kbd "M-ç") 'ispell-word)
 (delete-selection-mode t)
 
-(when (configuration-layer/package-usedp 'helm)
+(spacemacs|use-package-add-hook helm
+  :post-config
   (defun my-helm-yank-pop (&optional arg)
     (interactive "*p")
     (if (not (eq last-command 'yank))
@@ -52,7 +53,8 @@
       (yank-pop arg)))
   (global-set-key (kbd "M-y") 'my-helm-yank-pop))
 
-(when (configuration-layer/package-usedp 'projectile)
+(spacemacs|use-package-add-hook projectile
+  :post-config
   (setq projectile-use-git-grep t))
 
 (defun smarter-move-beginning-of-line (arg)
