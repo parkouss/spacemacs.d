@@ -92,4 +92,13 @@ point reaches the beginning or end of the buffer, stop there."
   :post-config
   (add-hook 'erc-mode-hook (lambda () (auto-fill-mode -1))))
 
+(spacemacs|use-package-add-hook web-mode
+  :post-config
+  (defun my-web-mode-hook ()
+    "Hooks for Web mode."
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    )
+  (add-hook 'web-mode-hook  'my-web-mode-hook))
+
 ;;; packages.el ends here
