@@ -49,6 +49,7 @@ values."
      better-edition
      ;; org
      (shell :variables
+            shell-default-shell 'multi-term
             shell-default-height 30
             shell-default-position 'bottom)
      (spell-checking :variables ispell-dictionary "english")
@@ -305,6 +306,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq custom-file (expand-file-name "~/.spacemacs.d/custom.el"))
   (load custom-file)
+
+  (setq term-unbind-key-list '("C-x" "C-c" "C-h" "C-y" "M-x"))
   )
 
 (defun dotspacemacs/user-config ()
