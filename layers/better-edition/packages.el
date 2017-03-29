@@ -102,3 +102,8 @@ point reaches the beginning or end of the buffer, stop there."
   (add-hook 'web-mode-hook  'my-web-mode-hook))
 
 ;;; packages.el ends here
+
+(spacemacs|use-package-add-hook company
+  :post-config
+  ;; do not use C-f to complete!
+  (define-key company-active-map (kbd "C-f") nil))
