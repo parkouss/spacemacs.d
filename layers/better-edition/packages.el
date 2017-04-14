@@ -107,3 +107,8 @@ point reaches the beginning or end of the buffer, stop there."
   :post-config
   ;; do not use C-f to complete!
   (define-key company-active-map (kbd "C-f") nil))
+
+(spacemacs|use-package-add-hook git-link
+  :post-init
+  ;; don't open in browser please
+  (setq git-link-open-in-browser nil))
