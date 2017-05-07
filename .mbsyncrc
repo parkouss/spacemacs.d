@@ -1,0 +1,96 @@
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+User j.parkouss@gmail.com
+PassCmd "grep 'login j.parkouss@gmail.com' ~/.authinfo | grep 'machine imap.gmail.com' | sed 's/.*password \"\\([^\"]*\\)\".*/\\1/g'"
+#
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+# The trailing "/" is important
+Path ~/Maildir/personal/
+Inbox ~/Maildir/personal/inbox
+
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Corbeille"
+Slave :gmail-local:"corbeille"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-inbox
+Master :gmail-remote:"INBOX"
+Slave :gmail-local:"inbox"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Messages envoy&AOk-s"
+Slave :gmail-local:"envois"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-drafts
+Master :gmail-remote:"[Gmail]/Brouillons"
+Slave :gmail-local:"brouillons"
+Create Both
+Expunge Both
+SyncState *
+
+
+# ------------------------------ work mail account -----------------------------
+
+IMAPAccount work
+Host imap.gmail.com
+User julien.pages@easymile.com
+PassCmd "grep 'login julien.pages@easymile.com' ~/.authinfo | grep 'machine imap.gmail.com' | sed 's/.*password \"\\([^\"]*\\)\".*/\\1/g'"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+# The trailing "/" is important
+Path ~/Maildir/work/
+Inbox ~/Maildir/work/inbox
+
+
+Channel work-trash
+Master :work-remote:"[Gmail]/Corbeille"
+Slave :work-local:"corbeille"
+Create Both
+Expunge Both
+SyncState *
+
+Channel work-inbox
+Master :work-remote:"INBOX"
+Slave :work-local:"inbox"
+Create Both
+Expunge Both
+SyncState *
+
+Channel work-sent
+Master :work-remote:"[Gmail]/Messages envoy&AOk-s"
+Slave :work-local:"envois"
+Create Both
+Expunge Both
+SyncState *
+
+Channel work-drafts
+Master :work-remote:"[Gmail]/Brouillons"
+Slave :work-local:"brouillons"
+Create Both
+Expunge Both
+SyncState *

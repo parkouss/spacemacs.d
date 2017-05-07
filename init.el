@@ -61,6 +61,10 @@ values."
           '(("127.0.0.1"
              :port 6667
              :nick "jp")))
+     (mu4e :variables
+           mu4e-account-alist t
+           mu4e-enable-notifications t
+           mu4e-installation-path "/usr/local/share/emacs/site-lisp")
      ;; (keyboard-layout :variables kl-layout 'bepo)
      ;; version-control
      )
@@ -317,4 +321,59 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; mail config
+  (require 'org-mu4e)  ;; allow to capture links to mails
+  (with-eval-after-load 'mu4e-alert
+    ;; Enable Desktop notifications
+    (mu4e-alert-set-default-style 'notifications)) ; For linux
+
+  (setq
+   ;; general
+   mu4e-maildir "~/Maildir"
+   ;; allow for updating mail using 'U' in the main view:
+   ;; this is mbsync, a LOT better than offlineimap.
+   ;; on arch, pacman -S isync
+   mu4e-get-mail-command (concat "mbsync -qaV -c "
+                                 (expand-file-name
+                                  ".mbsyncrc"
+                                  dotspacemacs-directory))
+   mu4e-update-interval 180
+   mu4e-headers-auto-update t
+   ;; mu4e-update-interval 300
+
+   ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+   mu4e-sent-messages-behavior 'delete
+
+   ;; required for mbsync
+   ;;mu4e-change-filenames-when-moving t
+
+   ;; smtp
+   message-send-mail-function 'smtpmail-send-it
+   smtpmail-stream-type 'starttls
+
+   ;; attachment dir
+   mu4e-attachment-dir  "~/Downloads"
+
+   ;; insert sign
+   mu4e-compose-signature "~Julien"
+   mu4e-compose-signature-auto-include 't
+   ;; don't keep message buffers around
+   message-kill-buffer-on-exit t
+   ;; quit without asking
+   mu4e-confirm-quit nil
+   user-full-name "Julien Pagès")
+
+  (setq mu4e-account-alist
+        '(("personal"
+           ;; Under each account, set the account-specific variables you want.
+           (mu4e-drafts-folder "/personal/brouillons")
+           (mu4e-sent-folder   "/personal/envois")
+           (mu4e-trash-folder  "/personal/corbeille")
+           (user-mail-address "j.parkouss@gmail.com"))
+          ("work"
+           (mu4e-drafts-folder "/work/brouillons")
+           (mu4e-sent-folder   "/work/envois")
+           (mu4e-trash-folder  "/work/corbeille")
+           (user-mail-address "julien.pages@easymile.com"))))
+  (mu4e/mail-account-reset)
   )
