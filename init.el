@@ -341,11 +341,12 @@ you should place your code here."
    mu4e-headers-auto-update t
    ;; mu4e-update-interval 300
 
+   mu4e-headers-skip-duplicates t
    ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
    mu4e-sent-messages-behavior 'delete
 
    ;; required for mbsync
-   ;;mu4e-change-filenames-when-moving t
+   mu4e-change-filenames-when-moving t
 
    ;; smtp
    message-send-mail-function 'smtpmail-send-it
