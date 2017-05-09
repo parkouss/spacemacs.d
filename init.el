@@ -379,4 +379,8 @@ you should place your code here."
            (mu4e-trash-folder  "/work/corbeille")
            (user-mail-address "julien.pages@easymile.com"))))
   (mu4e/mail-account-reset)
+
+  ;; default browser, conkeror
+  (setq browse-url-generic-program (executable-find "conkeror"))
+  (setq browse-url-browser-function 'browse-url-generic)
   )
