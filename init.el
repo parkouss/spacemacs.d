@@ -313,6 +313,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (load custom-file)
 
   (setq term-unbind-key-list '("C-x" "C-c" "C-h" "C-y" "M-x"))
+  (setq use-dialog-box nil)
   )
 
 (defun dotspacemacs/user-config ()
