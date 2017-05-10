@@ -323,6 +323,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; send mail configuration
+  (setq smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-service 587)
+
   ;; mail config
   (require 'org-mu4e)  ;; allow to capture links to mails
   (with-eval-after-load 'mu4e-alert
