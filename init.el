@@ -37,6 +37,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     (keyboard-layout :variables kl-layout 'bepo)
      auto-completion
      emacs-lisp
      git
@@ -65,7 +66,6 @@ values."
            mu4e-account-alist t
            mu4e-enable-notifications t
            mu4e-installation-path "/usr/local/share/emacs/site-lisp")
-     ;; (keyboard-layout :variables kl-layout 'bepo)
      ;; version-control
      docker
      )
@@ -77,7 +77,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(magit-gitflow)
+   dotspacemacs-excluded-packages '(magit-gitflow twittering-mode)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -120,7 +120,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -178,7 +178,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
@@ -389,4 +389,7 @@ you should place your code here."
   ;; default browser, conkeror
   (setq browse-url-generic-program (executable-find "conkeror"))
   (setq browse-url-browser-function 'browse-url-generic)
+
+  ;; custom key mappings
+  (add-to-list 'evil-emacs-state-modes 'dired-mode)
   )
