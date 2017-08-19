@@ -49,7 +49,7 @@ values."
      ;; semantic
      cscope
      better-edition
-     ;; org
+     org
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-height 30
@@ -332,7 +332,6 @@ you should place your code here."
         smtpmail-smtp-service 587)
 
   ;; mail config
-  (require 'org-mu4e)  ;; allow to capture links to mails
   (with-eval-after-load 'mu4e-alert
     ;; Enable Desktop notifications
     (mu4e-alert-set-default-style 'notifications)) ; For linux
@@ -391,4 +390,6 @@ you should place your code here."
   ;; default browser, conkeror
   (setq browse-url-generic-program (executable-find "conkeror"))
   (setq browse-url-browser-function 'browse-url-generic)
+
+  (setq org-agenda-files (list (concat dotspacemacs-directory "notes.org")))
   )
