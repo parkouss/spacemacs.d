@@ -50,7 +50,7 @@ values."
      ;; semantic
      cscope
      better-edition
-     ;; org
+     org
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-height 30
@@ -332,7 +332,6 @@ you should place your code here."
         smtpmail-smtp-service 587)
 
   ;; mail config
-  (require 'org-mu4e)  ;; allow to capture links to mails
   (with-eval-after-load 'mu4e-alert
     ;; Enable Desktop notifications
     (mu4e-alert-set-default-style 'notifications)) ; For linux
@@ -394,4 +393,6 @@ you should place your code here."
 
   ;; to not evilify some modes
   ;; (add-to-list 'evil-emacs-state-modes 'dired-mode)
+
+  (setq org-agenda-files (list (concat dotspacemacs-directory "notes.org")))
   )
