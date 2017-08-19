@@ -392,6 +392,6 @@ you should place your code here."
   (setq browse-url-generic-program (executable-find "conkeror"))
   (setq browse-url-browser-function 'browse-url-generic)
 
-  ;; custom key mappings
-  (add-to-list 'evil-emacs-state-modes 'dired-mode)
+  ;; to not evilify som modes
+  ;; (add-to-list 'evil-emacs-state-modes 'dired-mode)
   )
