@@ -391,5 +391,10 @@ you should place your code here."
   (setq browse-url-generic-program (executable-find "conkeror"))
   (setq browse-url-browser-function 'browse-url-generic)
 
-  (setq org-agenda-files (list (concat dotspacemacs-directory "notes.org")))
+  (setq my-note-file (concat dotspacemacs-directory "notes.org"))
+  (setq org-agenda-files (list my-note-file))
+  (setq org-return-follows-link t)
+  (setq org-capture-templates
+        `(("t" "Todo" entry (file+headline ,my-note-file "Tasks")
+           "* TODO %?\n  %t\n  %a\n   %i")))
   )
