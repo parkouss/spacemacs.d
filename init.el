@@ -311,12 +311,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq custom-file (expand-file-name "~/.spacemacs.d/custom.el"))
-  (load custom-file)
-
   (setq term-unbind-key-list '("C-x" "C-c" "C-h" "C-y" "M-x"))
   (setq use-dialog-box nil)
-  )
+
+  (let ((custom-file (expand-file-name "~/.spacemacs.d/custom.el")))
+    (if (file-exists-p custom-file)
+        (load custom-file))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
