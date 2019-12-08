@@ -328,10 +328,9 @@ you should place your code here."
   (setq browse-url-generic-program (executable-find "firefox"))
   (setq browse-url-browser-function 'browse-url-generic)
 
-  (setq my-note-file (concat dotspacemacs-directory "notes.org"))
-  (setq org-agenda-files (list my-note-file))
+  (setq org-agenda-files (list (expand-file-name "~/org-agenda")))
   (setq org-return-follows-link t)
-  (setq org-capture-templates
-        `(("t" "Todo" entry (file+headline ,my-note-file "Tasks")
-           "* TODO %?\n  %t\n  %a\n   %i")))
+  ;; (setq org-capture-templates
+  ;;       `(("t" "Todo" entry (file+headline ,my-note-file "Tasks")
+  ;;          "* TODO %?\n  %t\n  %a\n   %i")))
   )
