@@ -330,7 +330,7 @@ you should place your code here."
 
   (setq org-agenda-files (list (expand-file-name "~/org-agenda")))
   (setq org-return-follows-link t)
-  ;; (setq org-capture-templates
-  ;;       `(("t" "Todo" entry (file+headline ,my-note-file "Tasks")
-  ;;          "* TODO %?\n  %t\n  %a\n   %i")))
+  (setq org-capture-templates
+        `(("t" "Todo" entry (file+headline "~/org-agenda/notes.org" "Tasks")
+           "* TODO %?\n  %T")))
   )
